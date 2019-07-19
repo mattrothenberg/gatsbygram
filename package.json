@@ -1,0 +1,16 @@
+{
+  "name": "gatsbygram",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^2.13.31",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "develop": "gatsby develop",
+    "serve": "gatsby serve",
+    "build": "gatsby build"
+  }
+}
