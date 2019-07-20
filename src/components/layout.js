@@ -1,8 +1,11 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Box } from "rebass";
+import { Box, Image } from "rebass";
+import posed from "react-pose";
 
 import "../style/reset.css";
+
+import Logo from "./logo.svg";
 
 const theme = {
   breakpoints: ["40em", "52em", "64em"],
@@ -18,12 +21,21 @@ const theme = {
   }
 };
 
-const Layout = ({ children }) => (
+const FadingHeader = posed.header({
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 },
+  entering: { opacity: 1 },
+  entered: { opacity: 1 }
+});
+
+const Layout = ({ children, transitionStatus }) => (
   <ThemeProvider theme={theme}>
     <React.Fragment>
-      <Box as="header" px={[3, 5]}>
-        silly header
-      </Box>
+      <FadingHeader pose={transitionStatus}>
+        <Box px={[3, 5]} py={4}>
+          <Image src={Logo} alt="Gatsbygram Logo" height={32} />
+        </Box>
+      </FadingHeader>
       <Box as="main" px={[3, 5]}>
         {children}
       </Box>

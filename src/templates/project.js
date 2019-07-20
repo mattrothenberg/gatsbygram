@@ -53,7 +53,7 @@ const ProjectInner = ({ transitionStatus, project }) => {
   };
 
   return (
-    <Layout>
+    <Layout transitionStatus={transitionStatus}>
       <FadingContent pose={transitionStatus}>
         <ProjectHeader project={project} />
         <ProjectContent />
