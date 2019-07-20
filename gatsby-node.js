@@ -11,53 +11,9 @@ exports.createPages = async ({ graphql, actions }) => {
           title
           slug
           description
-          category {
-            title
-          }
-          featuredPhoto {
-            ...on DatoCmsAsset {
-              fluid {
-                aspectRatio
-                width
-                height
-                src
-                srcSet
-                sizes
-              }
-            }
-          }
-          photos {
-            ...on DatoCmsAsset{
-              fluid {
-                aspectRatio
-                width
-                height
-                src
-                srcSet
-                sizes
-              }
-            }
-          }
         }
         next {
-          title
           slug
-          description
-          category {
-            title
-          }
-          featuredPhoto {
-            ...on DatoCmsAsset {
-              fluid {
-                aspectRatio
-                width
-                height
-                src
-                srcSet
-                sizes
-              }
-            }
-          }
         }
       }
     }
@@ -77,8 +33,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/projects/${project.node.slug}`,
       component: projectTemplate,
       context: {
-        ...project.node,
-        next
+        nextSlug: next.slug,
+        ...project.node
       }
     });
   };

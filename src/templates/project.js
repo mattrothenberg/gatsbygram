@@ -1,6 +1,7 @@
 import React from "react";
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link";
 import posed from "react-pose";
+import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import ProjectHeader from "../components/project-header";
@@ -83,14 +84,58 @@ const ProjectInner = ({ transitionStatus, project }) => {
   );
 };
 
-const Project = ({ pageContext: project }) => {
+const Project = ({ pageContext: projectShell, data }) => {
+  const { project, next } = data;
+  const aggregateProject = {
+    ...projectShell,
+    ...project,
+    next
+  };
+
   return (
     <TransitionState>
       {({ transitionStatus }) => (
-        <ProjectInner transitionStatus={transitionStatus} project={project} />
+        <ProjectInner
+          transitionStatus={transitionStatus}
+          project={aggregateProject}
+        />
       )}
     </TransitionState>
   );
 };
+
+export const query = graphql`
+  query($slug: String!, $nextSlug: String!) {
+    project: datoCmsProject(slug: { eq: $slug }) {
+      description
+      category {
+        title
+      }
+      featuredPhoto {
+        fluid {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      photos {
+        fluid {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+    }
+    next: datoCmsProject(slug: { eq: $nextSlug }) {
+      title
+      slug
+      description
+      category {
+        title
+      }
+      featuredPhoto {
+        fluid {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+    }
+  }
+`;
 
 export default Project;

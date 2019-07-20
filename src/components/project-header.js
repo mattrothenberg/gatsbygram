@@ -57,7 +57,6 @@ const Hero = ({ photo, truncated }) => {
       <AspectRatioBox ratio={8 / 5}>
         <Img
           loading={truncated ? "lazy" : "eager"}
-          fadeIn={false}
           fluid={withFixedAspectRatio}
         />
       </AspectRatioBox>

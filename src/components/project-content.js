@@ -23,7 +23,7 @@ const ProjectContent = ({ photos }) => {
             };
             return (
               <AspectRatioBox key={index} ratio={8 / 5}>
-                <Img fadeIn={false} fluid={withFixedAspectRatio} />
+                <Img fluid={withFixedAspectRatio} />
               </AspectRatioBox>
             );
           })
