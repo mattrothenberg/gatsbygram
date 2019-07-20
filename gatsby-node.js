@@ -10,10 +10,54 @@ exports.createPages = async ({ graphql, actions }) => {
         node {
           title
           slug
+          description
+          category {
+            title
+          }
+          featuredPhoto {
+            ...on DatoCmsAsset {
+              fluid {
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                sizes
+              }
+            }
+          }
+          photos {
+            ...on DatoCmsAsset{
+              fluid {
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                sizes
+              }
+            }
+          }
         }
         next {
           title
           slug
+          description
+          category {
+            title
+          }
+          featuredPhoto {
+            ...on DatoCmsAsset {
+              fluid {
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                sizes
+              }
+            }
+          }
         }
       }
     }

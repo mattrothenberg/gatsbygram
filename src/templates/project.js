@@ -61,7 +61,7 @@ const ProjectInner = ({ transitionStatus, project }) => {
     <Layout transitionStatus={transitionStatus}>
       <FadingContent pose={transitionStatus}>
         <ProjectHeader project={project} />
-        <ProjectContent />
+        <ProjectContent photos={project.photos} />
       </FadingContent>
       <TransitionLink
         style={{
