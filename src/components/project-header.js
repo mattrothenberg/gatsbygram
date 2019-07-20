@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Flex, Heading, Text } from "rebass";
 import styled, { css } from "styled-components";
+import Img from "gatsby-image";
 
 import AspectRatioBox from "./aspect-ratio-box";
 
@@ -46,11 +47,22 @@ const HeroWrap = styled(Box)`
     `}
 `;
 
-const Hero = ({ truncated }) => (
-  <HeroWrap mt={[4, 5]} truncated={truncated}>
-    <AspectRatioBox ratio={8 / 5} />
-  </HeroWrap>
-);
+const Hero = ({ photo, truncated }) => {
+  const withFixedAspectRatio = {
+    ...photo.fluid,
+    aspectRatio: 8 / 5
+  };
+  return (
+    <HeroWrap mt={[4, 5]} truncated={truncated}>
+      <AspectRatioBox ratio={8 / 5}>
+        <Img
+          loading={truncated ? "lazy" : "eager"}
+          fluid={withFixedAspectRatio}
+        />
+      </AspectRatioBox>
+    </HeroWrap>
+  );
+};
 
 const ProjectHeader = ({ project, truncated }) => (
   <Box>
@@ -58,20 +70,16 @@ const ProjectHeader = ({ project, truncated }) => (
       <Box width={[1, 1 / 2]}>
         <Title as="h1">{project.title}</Title>
         <Box mt={3}>
-          <Category as="h3">Random Works</Category>
+          <Category as="h3">{project.category.title}</Category>
         </Box>
       </Box>
       <Box width={[1, 1 / 2]}>
         <Box mt={[3, 0]}>
-          <Description as="h2">
-            Lorem ipsum dolor amet scenester distillery tbh messenger bag DIY
-            pok pok food truck. Ramps iPhone gastropub actually freegan
-            cardigan.
-          </Description>
+          <Description as="h2">{project.description}</Description>
         </Box>
       </Box>
     </Flex>
-    <Hero truncated={truncated} />
+    <Hero photo={project.featuredPhoto} truncated={truncated} />
   </Box>
 );
 
