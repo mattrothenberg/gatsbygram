@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import { Box } from "rebass";
 
 import "../style/reset.css";
 
@@ -16,7 +17,10 @@ const theme = {
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <React.Fragment>{children}</React.Fragment>
+    <React.Fragment>
+      <Box as="header">silly header</Box>
+      <Box as="main">{children}</Box>
+    </React.Fragment>
   </ThemeProvider>
 );
 
