@@ -1,5 +1,7 @@
 import React from "react";
 
-const Project = ({ pageContext: project }) => <div>{project.title}</div>;
+import Layout from "../components/layout";
+
+const Project = ({ pageContext: project }) => <Layout>{project.title}</Layout>;
 
 export default Project;
