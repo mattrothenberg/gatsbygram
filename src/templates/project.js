@@ -5,6 +5,7 @@ import posed from "react-pose";
 import Layout from "../components/layout";
 import ProjectHeader from "../components/project-header";
 import ProjectContent from "../components/project-content";
+import NextProjectHeading from "../components/next-project-heading";
 
 const TRANSITION_LENGTH = 1.5;
 
@@ -27,6 +28,10 @@ const SlidingHeader = posed.div({
       duration: TRANSITION_LENGTH * 1000 - 250
     }
   }
+});
+
+const FadingNextProjectHeading = posed.div({
+  exiting: { opacity: 0 }
 });
 
 const ProjectInner = ({ transitionStatus, project }) => {
@@ -67,6 +72,9 @@ const ProjectInner = ({ transitionStatus, project }) => {
         exit={exitTransition}
         entry={entryTransition}
       >
+        <FadingNextProjectHeading pose={transitionStatus}>
+          <NextProjectHeading />
+        </FadingNextProjectHeading>
         <SlidingHeader pose={transitionStatus}>
           <ProjectHeader project={project.next} truncated={shouldTruncate} />
         </SlidingHeader>
