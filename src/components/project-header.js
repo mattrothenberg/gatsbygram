@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 
 import AspectRatioBox from "./aspect-ratio-box";
 
-const Title = styled(Heading)`
+export const Title = styled(Heading)`
   color: ${props => props.theme.colors.black};
   font-family: ${props => props.theme.fonts.sans};
   font-weight: 600;
@@ -17,7 +17,7 @@ const Title = styled(Heading)`
   }
 `;
 
-const Description = styled(Text)`
+export const Description = styled(Text)`
   color: ${props => props.theme.colors.black};
   font-family: ${props => props.theme.fonts.sans};
   font-weight: 600;
@@ -30,7 +30,7 @@ const Description = styled(Text)`
   }
 `;
 
-const Category = styled(Text)`
+export const Category = styled(Text)`
   color: ${props => props.theme.colors.grey};
   font-family: ${props => props.theme.fonts.sans};
   font-size: ${props => props.theme.fontSizes[3]}px;
