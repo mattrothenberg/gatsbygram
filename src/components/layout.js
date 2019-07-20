@@ -6,6 +6,7 @@ import "../style/reset.css";
 
 const theme = {
   breakpoints: ["40em", "52em", "64em"],
+  space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     sans: "system-ui, sans-serif"
   },
