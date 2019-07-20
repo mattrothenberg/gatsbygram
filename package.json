@@ -7,6 +7,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.13.31",
     "gatsby-plugin-styled-components": "^3.1.2",
+    "gatsby-plugin-transition-link": "^1.12.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "rebass": "^3.1.1",
